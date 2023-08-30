@@ -1,3 +1,42 @@
+<?php
+// Database configuration
+$servername = "localhost";
+$username = "root"; // Replace with your database username
+$password = ""; // Replace with your database password
+$dbname = "user"; // Replace with your database name
+
+// Create a connection to the database
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Initialize variables to store form data
+$uname = "";
+$upass = "";
+
+// Check if the form has been submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $uname = $_POST["uname"];
+    $upass = $_POST["upass"];
+
+    // Prepare and execute the insert statement
+    $sql = "INSERT INTO login (name, password) VALUES ('$uname', '$upass')";
+    if ($conn->query($sql) === TRUE) {
+        echo "New record inserted successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+// Close the connection
+$conn->close();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,10 +149,14 @@ span a {
   </style>
 </head>
 <body>
+	<form action="" method="post">
   <div class="form-box">
 		<div class="header-text">
-			  Add Admin 
-		</div><input placeholder="Full Name" type="text"> <input placeholder="Admin user name" type="text"> <input placeholder=" Password" type="password">  <button>Login</button>
+			 Add Admin
+		</div><input placeholder="Admin user name" name ="uname" type="text"> <input placeholder=" Password" type="password" name="upass">  <button type="submit"  name="login" class="btn btn-primary">Add</button>
+	</form>
 	</div>
+	
 </body>
+
 </html>

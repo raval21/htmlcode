@@ -1,3 +1,54 @@
+<?php
+// Database configuration
+$servername = "localhost";
+$username = "root"; // Replace with your database username
+$password = ""; // Replace with your database password
+$dbname = "user"; // Replace with your database name
+
+// Create a connection to the database
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Initialize variables to store form data
+$uname = "";
+$upass = "";
+
+// Check if the form has been submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $uname = $_POST["uname"];
+    $upass = $_POST["upass"];
+
+    // Prepare the statement
+	$sql = "select *from login where name = '$uname' and password = '$upass'";  
+	$result = mysqli_query($conn, $sql);  
+	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+	$count = mysqli_num_rows($result);  
+	  
+	if($count == 1){  
+		header("Location:home.html");  
+	}  
+	else{  
+		echo "<h1> Login failed. Invalid username or password.</h1>";  
+	}
+}
+
+// Close the statement
+
+
+// Close the connection
+$conn->close();
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,10 +160,14 @@ span a {
   </style>
 </head>
 <body>
+	<form action="" method="post">
   <div class="form-box">
 		<div class="header-text">
 			 Admin Login
-		</div><input placeholder="Admin user name" type="text"> <input placeholder=" Password" type="password">  <button>Login</button>
+		</div><input placeholder="Admin user name" name ="uname" type="text"> <input placeholder=" Password" type="password" name="upass">  <button type="submit"  name="login" class="btn btn-primary">login</button>
+	</form>
 	</div>
+	
 </body>
-</html>
+</htmL>
+

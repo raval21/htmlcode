@@ -1,3 +1,46 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Database connection details
+    $hostname = "localhost";  // Change this to your database hostname
+    $username = "root"; // Change this to your database username
+    $password = ""; // Change this to your database password
+    $dbname = "user"; // Change this to your database name
+    
+    // Establish database connection
+    $conn = new mysqli($hostname, $username, $password, $dbname);
+    
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    
+    $image = $_FILES["image"]["name"];
+    $fullname = $_POST["fullname"];
+    $gender = $_POST["gender"];
+    $age = $_POST["age"];
+    $nationality = $_POST["nationality"];
+    $typeofoffence = $_POST["typeofoffence"];
+    $casenumber = $_POST["casenumber"];
+    $bailstatus = $_POST["bailstatus"];
+    $jailtime = $_POST["jailtime"];
+    
+    // Prepare and execute the SQL query
+    $sql = "INSERT INTO criminal (image, fullname, gender, age, nationality, typeofoffence, casenumber, bailstatus, jailtime)
+            VALUES ('$image', '$fullname', '$gender', '$age', '$nationality', '$typeofoffence', '$casenumber', '$bailstatus', '$jailtime')";
+    
+    if ($conn->query($sql) === TRUE) {
+        echo "Data inserted successfully.";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    
+    // Close the database connection
+    $conn->close();
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,7 +121,7 @@
 <body>
     <div class="form-container">
         <h2>Add Criminal</h2>
-        <form action="submit_fir.php" method="POST" enctype="multipart/form-data">
+        <form action="" method="POST" enctype="multipart/form-data">
        
 
             <div class="form-group">
@@ -88,7 +131,7 @@
             <div class="form-group">
         
                 <label for="full-name">Full Name:</label>
-                <input type="text" id="full-name" name="full-name" required>
+                <input type="text" id="full-name" name="fullname" required>
             </div>
        
             <div class="form-group">
@@ -112,25 +155,25 @@
 
             <div class="form-group">
                 <label for="offence-type">Type of Offence:</label>
-                <input type="text" id="offence-type" name="offence_type" required>
+                <input type="text" id="offence-type" name="typeofoffence" required>
             </div>
 
             <div class="form-group">
                 <label for="case-number">Case/File Number:</label>
-                <input type="text" id="case-number" name="case_number" required>
+                <input type="text" id="case-number" name="casenumber" required>
             </div>
 
             <div class="form-group">
                 <label for="bail-status">Bail Status:</label>
-                <input type="radio" id="bail-yes" name="bail_status" value="yes" required>
+                <input type="radio" id="bail-yes" name="bailstatus" value="yes" required>
                 <label for="bail-yes">Yes</label>
-                <input type="radio" id="bail-no" name="bail_status" value="no" required>
+                <input type="radio" id="bail-no" name="bailstatus" value="no" required>
                 <label for="bail-no">No</label>
             </div>
 
             <div class="form-group">
                 <label for="jail-time">Jail Time:</label>
-                <input type="text" id="jail-time" name="jail_time" required>
+                <input type="text" id="jail-time" name="jailtime" required>
             </div>
 
             <div class="form-group">

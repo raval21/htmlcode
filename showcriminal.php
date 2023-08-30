@@ -1,3 +1,25 @@
+<?php
+// Database connection details
+$hostname = "localhost";  // Change this to your database hostname
+$username = "root"; // Change this to your database username
+$password = ""; // Change this to your database password
+$dbname = "user"; // Change this to your database name
+
+// Establish database connection
+$conn = new mysqli($hostname, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch data from the database
+$sql = "SELECT * FROM criminal";
+$result = $conn->query($sql);
+
+// Close the database connection
+$conn->close();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -61,72 +83,31 @@
           <th>Nationality</th>
           <th>Crime Type</th>
           <th>Case no.</th>
+          <th>bailstatus</th>
           <th>Jail Time</th>
             
         </tr>
         </thead>
-        <tbody class="table-group-divider">
-          <tr class="table-light" >
-            <tr class="table-light" >
-              <td scope="row"><img src="" alt=""></td>
-              <td>Item</td>
-              <td>Item</td>
-              <td>Item</td>
-              <td>Item</td>
-              <td>Item</td>
-              <td>Item</td>
-              <td>Item</td>
-             
-          
-</tr>
-<tr class="table-light" >
-    <td scope="row"><img src="" alt=""></td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-   
+        <tbody class="table-group-divider bg-secondary">
+        <tr class="table-secondary" >
+            <tr class="table-secondary" >
+          <?php
+          while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo  '<td><img src="path_to_image.jpg" alt="Criminal Image" width="100"></td>';
 
-</tr>
-<tr class="table-light" >
-    <td scope="row"><img src="" alt=""></td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-   
 
-</tr>
-<tr class="table-light" >
-    <td scope="row"><img src="" alt=""></td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-   
-
-</tr>
-<tr class="table-light" >
-    <td scope="row"><img src="" alt=""></td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-    <td>Item</td>
-   
-
-</tr>     
+            echo "<td>" . $row['fullname'] . "</td>";
+            echo "<td>" . $row['gender'] . "</td>";
+            echo "<td>" . $row['age'] . "</td>";
+            echo "<td>" . $row['nationality'] . "</td>";
+            echo "<td>" . $row['typeofoffence'] . "</td>";
+            echo "<td>" . $row['casenumber'] . "</td>";
+            echo "<td>" . $row['bailstatus'] . "</td>";
+            echo "<td>" . $row['jailtime'] . "</td>";
+            echo "</tr>";
+          }
+          ?>
           </tbody>
         <tfoot>
           
@@ -145,8 +126,4 @@
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-  </script>
-</body>
-
-</html>
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVee

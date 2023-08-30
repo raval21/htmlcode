@@ -19,16 +19,6 @@
     width: 100%;
     height: 100%;
   }
-  .form-control{
-    width: 200px;
-    display: inline;
-  
-  }
-  .container1{
-    margin-top: 50px;
-    margin-left: 900px;
-    justify-items: end;
-  }
   
 </style>
 </head>
@@ -36,12 +26,6 @@
 <body>
   <header>
     <!-- place navbar here -->
-   <div class="container1">
-    <form class="form-inline my-2 my-lg-0 ">
-      <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
-    </form>
-   </div>
   </header>
   <main>
 <div class="container p-5 ">
@@ -54,43 +38,24 @@
       <thead class="table-light">
         
         <tr>
-          <th>FullName</th>
-          <th>UserName</th>
-          <th>Password</th>
-          
+          <th>Image</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Age</th>
+          <th>Nationality</th>
+          <th>Crime Type</th>
+          <th>Case no.</th>
+          <th>bail status</th>
+          <th>Jail Time</th>
+          <th>Actions</th>  
         </tr>
         </thead>
         <tbody class="table-group-divider">
           <tr class="table-secondary" >
-            <td scope="row">Item</td>
-            <td>Item</td>
-            <td>1234</td>
-            </tr>
             <tr class="table-secondary" >
-              <td scope="row">Item</td>
-              <td>Item</td>
-              <td>1234</td>
-              </tr>
-              <tr class="table-secondary" >
-                <td scope="row">Item</td>
-                <td>Item</td>
-                <td>1234</td>
-                </tr>
-                <tr class="table-secondary" >
-                  <td scope="row">Item</td>
-                  <td>Item</td>
-                  <td>1234</td>
-                  </tr>
-                  <tr class="table-secondary" >
-                    <td scope="row">Item</td>
-                    <td>Item</td>
-                    <td>1234</td>
-                    </tr>
-                    <tr class="table-secondary" >
-                      <td scope="row">Item</td>
-                      <td>Item</td>
-                      <td>1234</td>
-                      </tr>
+              
+          
+</tr>
           
           </tbody>
         <tfoot>
