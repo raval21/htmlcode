@@ -92,9 +92,12 @@ $conn->close();
         <tr class="table-secondary" >
             <tr class="table-secondary" >
           <?php
-          while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo  '<td><img src="path_to_image.jpg" alt="Criminal Image" width="100"></td>';
+         while ($row = $result->fetch_assoc()) {
+          echo "<tr>";
+          echo '<td><img src="' . $row['image'] . '" alt="Criminal Image" width="100"></td>';
+          // ... rest of the table data ...
+          
+      
 
 
             echo "<td>" . $row['fullname'] . "</td>";
