@@ -51,8 +51,28 @@ if (!$result) {
     margin-left: 900px;
     justify-items: end;
   }
+  .back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    justify-content:center;
+    
+  }
   
 </style>
+<script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
 
 </head>
 
@@ -95,6 +115,7 @@ if (!$result) {
       </div>
     </div>
   </main>
+  
   <footer>
     <!-- ... (Your footer content here) ... -->
   </footer>

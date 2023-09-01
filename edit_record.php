@@ -31,8 +31,6 @@
 echo "<form action='update_record.php' method='post'>
         <input type='hidden' name='id' value='" . $row['id'] . "'>
         
-        <!-- Image -->
-        <input type='text' name='image' value='" . $row['image'] . "'>
         
         <!-- Fullname -->
         <input type='text' name='fullname' value='" . $row['fullname'] . "'>

@@ -67,7 +67,7 @@
                     echo "<tr class='table-secondary'>
 
                       
-                            <td>" . $row["image"] . "</td>
+                    <td><img src='" . $row["image"] . "' alt='Criminal Image' style='max-width: 100px;'></td>
                             <td>" . $row["fullname"] . "</td>
                             <td>" . $row["gender"] . "</td>
                             <td>" . $row["age"] . "</td>

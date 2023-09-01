@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             VALUES ('$image', '$fullname', '$gender', '$age', '$nationality', '$typeofoffence', '$casenumber', '$bailstatus', '$jailtime')";
     
     if ($conn->query($sql) === TRUE) {
-        echo "Data inserted successfully.";
+        echo ".";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
